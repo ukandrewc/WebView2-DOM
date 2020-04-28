@@ -7,7 +7,7 @@ It implements Window, Document, Element, Attribute, Style and Node.
 
 You can perform most operations on the DOM, e.g:
 
-`Document.GetElementById("elem_id").InsertAdjacentHTML("afterbegin", "<div>Content</>")`
+`Document.GetElementById("elem_id").InsertAdjacentHTML("afterbegin", "<div>Content</div>")`
 
 Events are raised from the underlying DOM asynchronously, so cannot be cancelled or modified from .NET.
 
