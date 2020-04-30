@@ -42,4 +42,10 @@ Friend Class Form1
 	Private Sub WebView2_DOMContextMenu(sender As Object, e As WVEvent) Handles WebView2.DOMContextMenu
 		MessageBox.Show($"Context Menu Location: {e.PageX} {e.PageY}")
 	End Sub
+
+	Private Sub WebView2_DOMBeforeEvent(sender As Object, Name As String, ByRef EvalJS As String) Handles WebView2.DOMBeforeEvent
+		If Name = "click" Then
+			EvalJS = "e.target.tagName!='IMG'"
+		End If
+	End Sub
 End Class
