@@ -9,6 +9,19 @@ You can perform most operations on the DOM, e.g:
 
 `Document.GetElementById("elem_id").InsertAdjacentHTML("afterbegin", "<div>Content</div>")`
 
-Events are raised from the underlying DOM asynchronously, so cannot be cancelled or modified from .NET.
+Added sync event, so that raised events can be cancelled, e.g.
 
-Events can be cancelled by adding JS code to be evaluated after the events are raised.
+`
+''' <summary>
+''' Raised synchronously from JS, so that EvalJS code can injected to cancel the event
+''' </summary>
+''' <param name="sender">WebView2</param>
+''' <param name="Name">Name of the event e.g. mouseover, click, etc.</param>
+''' <param name="EvalJS">Passed to eval() in JS, eval()==false to cancel event</param>
+Private Sub WebView2_DOMBeforeEvent(sender As Object, Name As String, ByRef EvalJS As String) Handles WebView2.DOMBeforeEvent
+  'Cancel if it's a click on a IMG
+	If Name = "click" Then
+		EvalJS = "e.target.tagName!='IMG'"
+	End If
+End Sub
+`
