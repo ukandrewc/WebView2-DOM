@@ -19,8 +19,8 @@ EvalJS: Passed to eval() in JS, eval()==false to cancel event
 
 Private Sub WebView2_DOMBeforeEvent(sender As Object, Name As String, ByRef EvalJS As String) Handles WebView2.DOMBeforeEvent
   'Cancel if it's a click on a IMG
-	If Name = "click" Then
-		EvalJS = "e.target.tagName!='IMG'"
-	End If
+  If Name = "click" Then
+    EvalJS = "e.target.tagName!='IMG'"
+  End If
 End Sub
 ```
