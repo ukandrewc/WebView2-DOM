@@ -4,6 +4,7 @@ DOM implementation for Michael Russin's [Webview2 Winforms Control](https://gith
 A test implementation for a WebView2 DOM, that can be accessed from .NET
 
 It implements Window, Document, Element, Attribute, Style and Node.
+Also implements QuerySelecter/QuerySelectorAll and Evaluate/EvaluateAll (XPath)
 
 You can perform most operations on the DOM, e.g:
 
