@@ -25,3 +25,4 @@ Private Sub WebView2_DOMBeforeEvent(sender As Object, Name As String, ByRef Eval
   End If
 End Sub
 ```
+Changed ComputedStyle from String Array to WVStyle
