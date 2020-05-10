@@ -10,19 +10,18 @@ You can perform most operations on the DOM, e.g:
 
 `Document.GetElementById("elem_id").InsertAdjacentHTML("afterbegin", "<div>Content</div>")`
 
-Added sync event, so that raised events can be cancelled, e.g.
+Changed Event handling to be able to cancel click and dblclick events from .net
+
+Added handlers for Click, Mouse, Keyboard, Input, ContextMenu and Custom events.
+
+click and dblclick events are cancelled and dispatched after being raised in .net. All other handlers are raised asynchronously.
+
+
 
 ```
-'Raised synchronously from JS, so that EvalJS code can injected to cancel the event
-sender: WebView2
-Name: Name of the event e.g. mouseover, click, etc.
-EvalJS: Passed to eval() in JS, eval()==false to cancel event
-
-Private Sub WebView2_DOMBeforeEvent(sender As Object, Name As String, ByRef EvalJS As String) Handles WebView2.DOMBeforeEvent
-  'Cancel if it's a click on a IMG
-  If Name = "click" Then
-    EvalJS = "e.target.tagName!='IMG'"
-  End If
+Private Sub WebView2_DOMClickEvent(sender As Object, e As WVEvent) Handles WebView2.DOMClickEvent
+	'Click events can be cancelled using ReturnValue
+	e.ReturnValue = e.Target.TextContent <> "About"
 End Sub
+
 ```
-Changed ComputedStyle from String() to WVStyle
