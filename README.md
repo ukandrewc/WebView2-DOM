@@ -14,7 +14,7 @@ Changed Event handling to be able to cancel click and dblclick events from .net
 
 Added handlers for Click, Mouse, Keyboard, Input, ContextMenu and Custom events.
 
-click and dblclick events are cancelled by preventDefault and stopPropogation. After being raised in .Net, they are dispatched if ReturnValue = True.
+In JS the click and dblclick events are cancelled by preventDefault and stopPropogation. After being raised in .Net, they are dispatched if ReturnValue = True.
 
 
 
