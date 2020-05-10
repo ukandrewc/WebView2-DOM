@@ -22,21 +22,10 @@ Partial Class Form1
 	'Do not modify it using the code editor.
 	<System.Diagnostics.DebuggerStepThrough()>
 	Private Sub InitializeComponent()
-		Me.WebView2 = New Edge_Chrome.WVBrowser()
 		Me.LblMessage = New System.Windows.Forms.Label()
 		Me.TxtAddress = New System.Windows.Forms.TextBox()
+		Me.WebView2 = New Edge_Chrome.WVBrowser()
 		Me.SuspendLayout()
-		'
-		'WebView2
-		'
-		Me.WebView2.Dock = System.Windows.Forms.DockStyle.Fill
-		Me.WebView2.EventCodeToEval = ""
-		Me.WebView2.EventsToRaise = "mouseover,mouseout,mousemove,mousedown,mouseup,click,dblclick"
-		Me.WebView2.Location = New System.Drawing.Point(0, 20)
-		Me.WebView2.Name = "WebView2"
-		Me.WebView2.PreventContextMenu = True
-		Me.WebView2.Size = New System.Drawing.Size(800, 410)
-		Me.WebView2.TabIndex = 0
 		'
 		'LblMessage
 		'
@@ -57,6 +46,20 @@ Partial Class Form1
 		Me.TxtAddress.Name = "TxtAddress"
 		Me.TxtAddress.Size = New System.Drawing.Size(800, 20)
 		Me.TxtAddress.TabIndex = 2
+		'
+		'WebView2
+		'
+		Me.WebView2.CustomEventsToRaise = ""
+		Me.WebView2.Dock = System.Windows.Forms.DockStyle.Fill
+		Me.WebView2.Location = New System.Drawing.Point(0, 20)
+		Me.WebView2.Name = "WebView2"
+		Me.WebView2.RaiseClickEvents = True
+		Me.WebView2.RaiseContextMenu = False
+		Me.WebView2.RaiseInputEvents = True
+		Me.WebView2.RaiseKeyEvents = False
+		Me.WebView2.RaiseMouseEvents = True
+		Me.WebView2.Size = New System.Drawing.Size(800, 410)
+		Me.WebView2.TabIndex = 0
 		'
 		'Form1
 		'

@@ -1,4 +1,4 @@
-﻿Imports Edge_Chrome
+Imports Edge_Chrome
 Imports MtrDev.WebView2.Wrapper
 
 Friend Class Form1
@@ -7,7 +7,7 @@ Friend Class Form1
 
 	Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
 		If WindowArgs Is Nothing Then
-			WebView2.Navigate("https:/google.co.uk")
+			WebView2.Navigate("https://google.co.uk")
 		End If
 	End Sub
 
@@ -40,12 +40,19 @@ Friend Class Form1
 	End Sub
 
 	Private Sub WebView2_DOMContextMenu(sender As Object, e As WVEvent) Handles WebView2.DOMContextMenu
-		MessageBox.Show($"Context Menu Location: {e.PageX} {e.PageY}")
+		LblMessage.Text = $"Context Menu Location: {e.PageX} {e.PageY}"
 	End Sub
 
-	Private Sub WebView2_DOMBeforeEvent(sender As Object, Name As String, ByRef EvalJS As String) Handles WebView2.DOMBeforeEvent
-		If Name = "click" Then
-			EvalJS = "e.target.tagName!='IMG'"
-		End If
+	Private Sub WebView2_DOMKeyEvent(sender As Object, e As WVEvent) Handles WebView2.DOMKeyEvent
+		Console.WriteLine(e)
 	End Sub
+
+	Private Sub WebView2_DOMClickEvent(sneder As Object, e As WVEvent) Handles WebView2.DOMClickEvent
+		e.ReturnValue = e.Target.TextContent <> "About"
+	End Sub
+
+	Private Sub WebView2_DOMInputEvent(sender As Object, e As WVEvent) Handles WebView2.DOMInputEvent
+		Console.WriteLine(e.Type)
+	End Sub
+
 End Class
